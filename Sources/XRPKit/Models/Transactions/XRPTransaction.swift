@@ -34,7 +34,7 @@ public class XRPTransaction: XRPRawTransaction {
             _ = XRPLedger.getAccountInfo(account: self.wallet.address).map { (accountInfo) in
                 // dictionary containing transaction fields
                 let filledFields: [String:Any] = [
-                    "LastLedgerSequence" : ledgerInfo.index+1,
+                    "LastLedgerSequence" : ledgerInfo.index+5,
                     "Fee" : String(ledgerInfo.minFee), // FIXME: determine fee automatically
                     "Sequence" : accountInfo.sequence,
                 ]
