@@ -138,7 +138,7 @@ public class XRPMnemonicWallet: XRPWallet {
         )
     }
     
-    private init(privateKey: String, publicKey: String, mnemonic: String, address: String) {
+    public init(privateKey: String, publicKey: String, mnemonic: String = "", address: String) {
         self.privateKey = privateKey.uppercased()
         self.publicKey = publicKey.uppercased()
         self.mnemonic = mnemonic
