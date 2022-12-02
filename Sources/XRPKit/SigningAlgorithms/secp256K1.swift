@@ -9,10 +9,10 @@ import Foundation
 import secp256k1
 import BigInt
 
-struct ECDSAPublicKey {
-    var raw: secp256k1_pubkey
-    var uncompressed: [UInt8]
-    var compressed: [UInt8]
+public struct ECDSAPublicKey {
+    public var raw: secp256k1_pubkey
+    public var uncompressed: [UInt8]
+    public var compressed: [UInt8]
 }
 
 public enum SigningError: Error {
@@ -25,7 +25,7 @@ public enum SECP256K1Error: Error {
     case derivationFailed
 }
 
-class SECP256K1: SigningAlgorithm {
+public class SECP256K1: SigningAlgorithm {
     
     static func deriveKeyPair(seed: [UInt8]) throws -> XRPKeyPair {
         
@@ -75,7 +75,7 @@ class SECP256K1: SigningAlgorithm {
         }
     }
     
-    internal static func derivePublicKey(ctx: OpaquePointer, secretKey: UnsafePointer<UInt8>) throws -> ECDSAPublicKey {
+    public static func derivePublicKey(ctx: OpaquePointer, secretKey: UnsafePointer<UInt8>) throws -> ECDSAPublicKey {
         var _publicKey = secp256k1_pubkey()
         if secp256k1_ec_pubkey_create(ctx, UnsafeMutablePointer<secp256k1_pubkey>(&_publicKey), secretKey) == 0 {
             secp256k1_context_destroy(ctx)
